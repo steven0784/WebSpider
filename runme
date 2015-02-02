@@ -1,0 +1,10 @@
+PATH=/bin:/usr/bin
+cd WebSpider
+rm -f db.sqlite3
+
+python manage.py syncdb --noinput
+python manage.py makemigrations
+python manage.py migrate
+python populate.py
+
+python manage.py runserver

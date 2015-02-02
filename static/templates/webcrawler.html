@@ -1,0 +1,18 @@
+
+{% extends 'base.html' %}
+{% block content %}
+        <div class="row">
+        <div class="col-lg-12">
+		<h1> Please add your URLs</h1>
+		{% if user.is_authenticated %}
+			<h2>hello {{ user.username }}!</h2>
+		{% else %}
+			<h2>hello world!</h2>
+		{% endif %}
+		<form method='POST' action=''> {% csrf_token %}
+		    {{form.as_p}}
+		    <input type = 'submit' class='btn btn-primary btn-sm' value='add'>
+		</form>
+	</div>
+        </div>
+{% endblock %}

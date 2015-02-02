@@ -1,0 +1,15 @@
+{%extends 'base.html' %}
+ 
+ 
+{%block content %}
+<h1>Welcome to WebSpider</h1>
+<a href="/about/" class="btn btn-success" role="button">about us</a>
+<h2>
+    
+</h2>
+{% if user.is_authenticated %}
+<a href="/job/" class="btn btn-success" role="button">Crawl Web</a>
+{% else %}
+<a href="/register/" class="btn btn-success" role="button">register</a>
+{% endif %}    
+{% endblock %}

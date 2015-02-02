@@ -1,0 +1,21 @@
+{%extends 'base.html' %}
+ 
+ 
+{%block content %}
+        {% if user.is_authenticated %}
+            <h2>{{ user.username }} you are already logged in</h2>
+            <a href="/logout/">Logout?</a><br />
+        {% else %}
+        <h1>Login to WebSpider</h1>
+
+        <form id="login_form" method="post" action="/login/">
+            {% csrf_token %}
+            Username: <input type="text" name="username" value="" size="50" />
+            <br />
+            Password: <input type="password" name="password" value="" size="50" />
+            <br />
+            <button type="submit" class="btn btn-primary" >Sign In</button>
+        </form>
+        {% endif %}
+
+{% endblock %}

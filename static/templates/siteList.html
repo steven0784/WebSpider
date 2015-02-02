@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1> Add a website </h1>
+
+<div class="dropdown">
+    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+        Add from existing session
+        <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+        {% for session in sessions %}
+            {% if session.sessionID != sessionID %}
+                <li role="presentation" class="dropdown-header">Sesssion{{session.sessionID}}</li>
+                {% if source %}
+                    {% for source in session.sources.all %}
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="{% url 'addexistingsource' %}{{sessionID}}{{source.name}}">{{source.name}}</a></li>
+                    {% endfor %}
+                {% else %}
+                    {% for monitor in session.monitors.all %}
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="{% url 'addexistingmonitor' %}{{sessionID}}{{monitor.name}}">{{monitor.name}}</a></li>
+                    {% endfor %}
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+    </ul>
+</div>
+
+<form role='form' action="" method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit" class="btn btn-default">Ok</button>
+    <a href="/" class="btn btn-default" role="button">Cancel</a>
+</form>
+{% endblock %}

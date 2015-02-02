@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+        <div class="row">
+        <div class="col-lg-12">
+		<h1> Please add your URLs</h1>
+		<form method='POST' action=''> {% csrf_token %}
+		    {{form.as_p}}
+		    <input type = 'submit' class='btn btn-primary btn-sm' value='add'>
+		</form>
+		<h2>your List of monitored WebSites</h2>
+		{% for stuff in k %}
+			<li>{{ stuff.urlname }}</li>
+		{% endfor %}
+		<a href="/results/" class="btn btn-success" role="button">Results</a>
+	</div>
+        </div>
+{% endblock %}

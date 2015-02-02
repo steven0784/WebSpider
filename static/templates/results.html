@@ -1,0 +1,56 @@
+{% extends 'framed_base.html' %}
+{% block body %}
+
+<ul class="nav nav-tabs" role="tablist">
+  <li role="presentation"><a href="/{{mysession.sessionID}}">Setup</a></li>
+  <li role="presentation" class="active"><a href="#">Results</a></li>
+  <li role="presentation"><a href="{% url 'summary' %}{{mysession.sessionID}}">Summary</a></li>
+</ul>
+
+    <h1>Results for Session {{sessionID}}</h1>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js" type="text/javascript"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/Chart.js/0.2.0/Chart.js" type="text/javascript"></script>
+    <script>
+	var sessionMonitors = "{{ sessionMonitors }}"
+	var lengthList = "{{ lengthList }}"
+	var monitors = sessionMonitors.split(',')
+	var lengths = lengthList.split(',')
+	for( var i in monitors){
+	    monitors[i] = monitors[i].replace(/[\]]+/g, '')
+	    monitors[i] = monitors[i].substring(10,monitors[i].length-4)
+	}
+	for (var i in lengths){
+	    lengths[i] = parseInt(lengths[i].replace(/[\'\"\]\[]+/g, ''))
+	}
+	lengths.push(0)
+	var barChartData = {
+		
+		labels : monitors,
+		datasets : [
+			{
+				fillColor : "rgba(220,220,220,0.5)",
+				strokeColor : "rgba(220,220,220,0.8)",
+				highlightFill: "rgba(220,220,220,0.75)",
+				highlightStroke: "rgba(220,220,220,1)",
+				data : lengths
+				},
+		]
+
+	}
+	window.onload = function(){
+		var ctx = document.getElementById("canvas").getContext("2d");
+		window.myBar = new Chart(ctx).Bar(barChartData, {
+			responsive : true
+		});
+	}
+
+    </script>
+
+	<div style="width: 50%">
+        <canvas id="canvas" height="650" width="650"></canvas>
+	</div>
+{% endblock %}
+
+
+

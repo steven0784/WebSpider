@@ -1,0 +1,1116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<!-- disable iPhone inital scale -->
+<meta name="viewport" content="width=device-width; initial-scale=1.0">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={xpid:"VwMFUFJXGwIIXFhRAwY="};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var o=e[n]={exports:{}};t[n][0].call(o.exports,function(e){var o=t[n][1][e];return r(o?o:e)},o,o.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({QJf3ax:[function(t,e){function n(t){function e(e,n,a){t&&t(e,n,a),a||(a={});for(var c=s(e),u=c.length,f=i(a,o,r),d=0;u>d;d++)c[d].apply(f,n);return f}function a(t,e){u[t]=s(t).concat(e)}function s(t){return u[t]||[]}function c(){return n(e)}var u={};return{on:a,emit:e,create:c,listeners:s,_events:u}}function r(){return{}}var o="nr@context",i=t("gos");e.exports=n()},{gos:"7eSDFh"}],ee:[function(t,e){e.exports=t("QJf3ax")},{}],3:[function(t){function e(t,e,n,i,s){try{c?c-=1:r("err",[s||new UncaughtException(t,e,n)])}catch(u){try{r("ierr",[u,(new Date).getTime(),!0])}catch(f){}}return"function"==typeof a?a.apply(this,o(arguments)):!1}function UncaughtException(t,e,n){this.message=t||"Uncaught error with no additional information",this.sourceURL=e,this.line=n}function n(t){r("err",[t,(new Date).getTime()])}var r=t("handle"),o=t(4),i=t("ee"),a=window.onerror,s=!1,c=0;t("loader").features.err=!0,window.onerror=e,NREUM.noticeError=n;try{throw new Error}catch(u){"stack"in u&&(t(5),t(3),"addEventListener"in window&&t(1),window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&t(2),s=!0)}i.on("fn-start",function(){s&&(c+=1)}),i.on("fn-err",function(t,e,r){s&&(this.thrown=!0,n(r))}),i.on("fn-end",function(){s&&!this.thrown&&c>0&&(c-=1)}),i.on("internal-error",function(t){r("ierr",[t,(new Date).getTime(),!0])})},{1:4,2:7,3:5,4:18,5:6,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],4:[function(t,e){function n(t){i.inPlace(t,["addEventListener","removeEventListener"],"-",r)}function r(t){return t[1]}var o=(t(1),t("ee").create()),i=t(2)(o),a=t("gos");if(e.exports=o,n(window),"getPrototypeOf"in Object){for(var s=document;s&&!s.hasOwnProperty("addEventListener");)s=Object.getPrototypeOf(s);s&&n(s);for(var c=XMLHttpRequest.prototype;c&&!c.hasOwnProperty("addEventListener");)c=Object.getPrototypeOf(c);c&&n(c)}else XMLHttpRequest.prototype.hasOwnProperty("addEventListener")&&n(XMLHttpRequest.prototype);o.on("addEventListener-start",function(t){if(t[1]){var e=t[1];"function"==typeof e?this.wrapped=t[1]=a(e,"nr@wrapped",function(){return i(e,"fn-",null,e.name||"anonymous")}):"function"==typeof e.handleEvent&&i.inPlace(e,["handleEvent"],"fn-")}}),o.on("removeEventListener-start",function(t){var e=this.wrapped;e&&(t[1]=e)})},{1:18,2:19,ee:"QJf3ax",gos:"7eSDFh"}],5:[function(t,e){var n=(t(2),t("ee").create()),r=t(1)(n);e.exports=n,r.inPlace(window,["requestAnimationFrame","mozRequestAnimationFrame","webkitRequestAnimationFrame","msRequestAnimationFrame"],"raf-"),n.on("raf-start",function(t){t[0]=r(t[0],"fn-")})},{1:19,2:18,ee:"QJf3ax"}],6:[function(t,e){function n(t,e,n){var r=t[0];"string"==typeof r&&(r=new Function(r)),t[0]=o(r,"fn-",null,n)}var r=(t(2),t("ee").create()),o=t(1)(r);e.exports=r,o.inPlace(window,["setTimeout","setInterval","setImmediate"],"setTimer-"),r.on("setTimer-start",n)},{1:19,2:18,ee:"QJf3ax"}],7:[function(t,e){function n(){c.inPlace(this,d,"fn-")}function r(t,e){c.inPlace(e,["onreadystatechange"],"fn-")}function o(t,e){return e}var i=t("ee").create(),a=t(1),s=t(2),c=s(i),u=s(a),f=window.XMLHttpRequest,d=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"];e.exports=i,window.XMLHttpRequest=function(t){var e=new f(t);try{i.emit("new-xhr",[],e),u.inPlace(e,["addEventListener","removeEventListener"],"-",function(t,e){return e}),e.addEventListener("readystatechange",n,!1)}catch(r){try{i.emit("internal-error",[r])}catch(o){}}return e},window.XMLHttpRequest.prototype=f.prototype,c.inPlace(XMLHttpRequest.prototype,["open","send"],"-xhr-",o),i.on("send-xhr-start",r),i.on("open-xhr-start",r)},{1:4,2:19,ee:"QJf3ax"}],8:[function(t){function e(t){if("string"==typeof t&&t.length)return t.length;if("object"!=typeof t)return void 0;if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if("undefined"!=typeof FormData&&t instanceof FormData)return void 0;try{return JSON.stringify(t).length}catch(e){return void 0}}function n(t){var n=this.params,r=this.metrics;if(!this.ended){this.ended=!0;for(var i=0;c>i;i++)t.removeEventListener(s[i],this.listener,!1);if(!n.aborted){if(r.duration=(new Date).getTime()-this.startTime,4===t.readyState){n.status=t.status;var a=t.responseType,u="arraybuffer"===a||"blob"===a||"json"===a?t.response:t.responseText,f=e(u);if(f&&(r.rxSize=f),this.sameOrigin){var d=t.getResponseHeader("X-NewRelic-App-Data");d&&(n.cat=d.split(", ").pop())}}else n.status=0;r.cbTime=this.cbTime,o("xhr",[n,r,this.startTime])}}}function r(t,e){var n=i(e),r=t.params;r.host=n.hostname+":"+n.port,r.pathname=n.pathname,t.sameOrigin=n.sameOrigin}if(window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&!/CriOS/.test(navigator.userAgent)){t("loader").features.xhr=!0;var o=t("handle"),i=t(2),a=t("ee"),s=["load","error","abort","timeout"],c=s.length,u=t(1);t(4),t(3),a.on("new-xhr",function(){this.totalCbs=0,this.called=0,this.cbTime=0,this.end=n,this.ended=!1,this.xhrGuids={}}),a.on("open-xhr-start",function(t){this.params={method:t[0]},r(this,t[1]),this.metrics={}}),a.on("open-xhr-end",function(t,e){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&e.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid)}),a.on("send-xhr-start",function(t,n){var r=this.metrics,o=t[0],i=this;if(r&&o){var u=e(o);u&&(r.txSize=u)}this.startTime=(new Date).getTime(),this.listener=function(t){try{"abort"===t.type&&(i.params.aborted=!0),("load"!==t.type||i.called===i.totalCbs&&(i.onloadCalled||"function"!=typeof n.onload))&&i.end(n)}catch(e){try{a.emit("internal-error",[e])}catch(r){}}};for(var f=0;c>f;f++)n.addEventListener(s[f],this.listener,!1)}),a.on("xhr-cb-time",function(t,e,n){this.cbTime+=t,e?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof n.onload||this.end(n)}),a.on("xhr-load-added",function(t,e){var n=""+u(t)+!!e;this.xhrGuids&&!this.xhrGuids[n]&&(this.xhrGuids[n]=!0,this.totalCbs+=1)}),a.on("xhr-load-removed",function(t,e){var n=""+u(t)+!!e;this.xhrGuids&&this.xhrGuids[n]&&(delete this.xhrGuids[n],this.totalCbs-=1)}),a.on("addEventListener-end",function(t,e){e instanceof XMLHttpRequest&&"load"===t[0]&&a.emit("xhr-load-added",[t[1],t[2]],e)}),a.on("removeEventListener-end",function(t,e){e instanceof XMLHttpRequest&&"load"===t[0]&&a.emit("xhr-load-removed",[t[1],t[2]],e)}),a.on("fn-start",function(t,e,n){e instanceof XMLHttpRequest&&("onload"===n&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=(new Date).getTime()))}),a.on("fn-end",function(t,e){this.xhrCbStart&&a.emit("xhr-cb-time",[(new Date).getTime()-this.xhrCbStart,this.onload,e],e)})}},{1:"XL7HBI",2:9,3:7,4:4,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],9:[function(t,e){e.exports=function(t){var e=document.createElement("a"),n=window.location,r={};e.href=t,r.port=e.port;var o=e.href.split("://");return!r.port&&o[1]&&(r.port=o[1].split("/")[0].split(":")[1]),r.port&&"0"!==r.port||(r.port="https"===o[0]?"443":"80"),r.hostname=e.hostname||n.hostname,r.pathname=e.pathname,"/"!==r.pathname.charAt(0)&&(r.pathname="/"+r.pathname),r.sameOrigin=!e.hostname||e.hostname===document.domain&&e.port===n.port&&e.protocol===n.protocol,r}},{}],gos:[function(t,e){e.exports=t("7eSDFh")},{}],"7eSDFh":[function(t,e){function n(t,e,n){if(r.call(t,e))return t[e];var o=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:o,writable:!0,enumerable:!1}),o}catch(i){}return t[e]=o,o}var r=Object.prototype.hasOwnProperty;e.exports=n},{}],D5DuLP:[function(t,e){function n(t,e,n){return r.listeners(t).length?r.emit(t,e,n):(o[t]||(o[t]=[]),void o[t].push(e))}var r=t("ee").create(),o={};e.exports=n,n.ee=r,r.q=o},{ee:"QJf3ax"}],handle:[function(t,e){e.exports=t("D5DuLP")},{}],XL7HBI:[function(t,e){function n(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:i(t,o,function(){return r++})}var r=1,o="nr@id",i=t("gos");e.exports=n},{gos:"7eSDFh"}],id:[function(t,e){e.exports=t("XL7HBI")},{}],loader:[function(t,e){e.exports=t("G9z0Bl")},{}],G9z0Bl:[function(t,e){function n(){var t=p.info=NREUM.info;if(t&&t.agent&&t.licenseKey&&t.applicationID&&c&&c.body){p.proto="https"===d.split(":")[0]||t.sslForHttp?"https://":"http://",a("mark",["onload",i()]);var e=c.createElement("script");e.src=p.proto+t.agent,c.body.appendChild(e)}}function r(){"complete"===c.readyState&&o()}function o(){a("mark",["domContent",i()])}function i(){return(new Date).getTime()}var a=t("handle"),s=window,c=s.document,u="addEventListener",f="attachEvent",d=(""+location).split("?")[0],p=e.exports={offset:i(),origin:d,features:{}};c[u]?(c[u]("DOMContentLoaded",o,!1),s[u]("load",n,!1)):(c[f]("onreadystatechange",r),s[f]("onload",n)),a("mark",["firstbyte",i()])},{handle:"D5DuLP"}],18:[function(t,e){function n(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,o=n-e||0,i=Array(0>o?0:o);++r<o;)i[r]=t[e+r];return i}e.exports=n},{}],19:[function(t,e){function n(t){return!(t&&"function"==typeof t&&t.apply&&!t[i])}var r=t("ee"),o=t(1),i="nr@wrapper",a=Object.prototype.hasOwnProperty;e.exports=function(t){function e(t,e,r,a){function nrWrapper(){var n,i,s,u;try{i=this,n=o(arguments),s=r&&r(n,i)||{}}catch(d){f([d,"",[n,i,a],s])}c(e+"start",[n,i,a],s);try{return u=t.apply(i,n)}catch(p){throw c(e+"err",[n,i,p],s),p}finally{c(e+"end",[n,i,u],s)}}return n(t)?t:(e||(e=""),nrWrapper[i]=!0,u(t,nrWrapper),nrWrapper)}function s(t,r,o,i){o||(o="");var a,s,c,u="-"===o.charAt(0);for(c=0;c<r.length;c++)s=r[c],a=t[s],n(a)||(t[s]=e(a,u?s+o:o,i,s,t))}function c(e,n,r){try{t.emit(e,n,r)}catch(o){f([o,e,n,r])}}function u(t,e){if(Object.defineProperty&&Object.keys)try{var n=Object.keys(t);return n.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(r){f([r])}for(var o in t)a.call(t,o)&&(e[o]=t[o]);return e}function f(e){try{t.emit("internal-error",e)}catch(n){}}return t||(t=r),e.inPlace=s,e.flag=i,e}},{1:18,ee:"QJf3ax"}]},{},["G9z0Bl",3,8]);</script>
+<!--<meta name="p:domain_verify" content="62fa374ba628cbcddaa356e64669d8a7"/>-->
+<meta name="description" content="Are you a gamer, enthusiast or rookie builder looking to step your hardware game up? Buy an NZXT case, cooler or PSU to improve your PC's look and performance."/>
+<meta name="keywords" content="cooling computer cases, gaming cases, mid tower, full tower"/>
+<title>NZXT | PC Hardware Manufacturer - Creators of Crafted Gaming Armor</title>
+<!-- for fb like -->
+<link rel="canonical" href="http://www.nzxt.com/"/>
+<meta property="og:url" content="http://www.nzxt.com/"/>
+<meta property="og:type" content="article"/>
+<meta property="og:title" content="NZXT | PC Hardware Manufacturer - Creators of Crafted Gaming Armor"/>
+<meta property="og:description" content="Are you a gamer, enthusiast, or rookie builder looking to step your hardware game up? Buy an NZXT case, cooler, or PSU to improve your PC's look and performance."/>
+<link rel="icon" href="favicon.ico" type="image/x-icon"/>
+<link rel="icon" href="favicon.ico" type="image/ico"/>
+<link href='https://fonts.googleapis.com/css?family=Quantico|Open+Sans+Condensed:700|Arimo:700' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" type="text/css" href="assets/css/styles.css+livechat_tab.css+jquery-ui-1.8.16.custom.css.pagespeed.cc.oHLkVDYkGi.css"/>
+<script>var _prum=[['id','51dae35aabe53dfe76000000'],['mark','firstbyte',(new Date()).getTime()]];(function(){var s=document.getElementsByTagName('script')[0],p=document.createElement('script');p.async='async';p.src='//rum-static.pingdom.net/prum.min.js';s.parentNode.insertBefore(p,s);})();</script>
+<!--
+	<script type="text/javascript" src="/assets/js/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="/assets/js/all.js"></script>
+	-->
+<!--<script type="text/javascript" src="/assets/js/jquery.livequery.js"></script>-->
+<!--<script type="text/javascript" src="/assets/js/jquery.jcarousel.min.js"></script>
+	
+	<script type="text/javascript" src="/assets/js/fancybox/jquery.fancybox.pack.js"></script>
+	<script type="text/javascript" src="/assets/js/dropkick/jquery.dropkick-1.0.0.js"></script>-->
+<script src="assets/js/LAB.min.js.pagespeed.jm.SvdlMgj4z-.js"></script>
+<script>$LAB.script("/assets/js/jquery-1.7.2.min.js").wait().script("/assets/js/jquery.livequery.js").wait().script("/assets/js/all.js").wait().script("http://www.nzxt.com/assets/js/jquery.ui.core.min.js").script("http://www.nzxt.com/assets/js/jquery.ui.widget.min.js").script("http://www.nzxt.com/assets/js/jquery.ui.position.min.js").script("http://www.nzxt.com/assets/js/jquery.ui.autocomplete.min.js").script("/assets/film_roll-master/js/jquery.film_roll.js").wait(function(){$(document).ready(function(){var film_roll=new FilmRoll({container:'#film_roll',start_index:1,interval:3000,height:115});});});</script>
+<!-- amazon cloud search -->
+<style type="text/css">.ui-autocomplete li a{font-weight:normal;font-size:12px}.ui-autocomplete li a:hover{cursor:pointer;text-decoration:underline;background-image:none;background-color:#fff;border:1px solid #fff}</style>
+<!-- Google Analytics -->
+<script type="text/javascript">var _gaq=_gaq||[];var pluginUrl='//www.google-analytics.com/plugins/ga/inpage_linkid.js';_gaq.push(['_require','inpage_linkid',pluginUrl]);_gaq.push(['_setAccount','UA-1138231-2']);_gaq.push(['_trackPageview']);(function(){var ga=document.createElement('script');ga.type='text/javascript';ga.async=true;ga.src=('https:'==document.location.protocol?'https://ssl':'http://www')+'.google-analytics.com/ga.js';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(ga,s);})();</script>
+<!--
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-1138231-2');
+ga('send', 'pageview');
+
+</script>
+-->
+<!-- End Google Analytics -->
+<!-- smart pixel -->
+<script type="text/javascript">adroll_adv_id="3CYECKIN6NH77FMEAURLVS";adroll_pix_id="YU2QJYCCQNGOTEZ3EISMSU";(function(){var oldonload=window.onload;window.onload=function(){__adroll_loaded=true;var scr=document.createElement("script");var host=(("https:"==document.location.protocol)?"https://s.adroll.com":"http://a.adroll.com");scr.setAttribute('async','true');scr.type="text/javascript";scr.src=host+"/j/roundtrip.js";((document.getElementsByTagName('head')||[null])[0]||document.getElementsByTagName('script')[0].parentNode).appendChild(scr);if(oldonload){oldonload()}};}());</script>
+</head><script>$LAB.script("/assets/js/jquery.cycle.all.js");</script>
+<body id="home">
+<div id="wrapper">
+<div id="container">
+<!-- Element to pop up chinese -->
+<div id="element_to_pop_up">
+<div class="inner">
+<img src="assets/images/xchinese_modal.png.pagespeed.ic.p7dztEP5WT.png" width="383" height="296">
+<a href="http://e.trello.com/track/click.php?u=30023008&id=e0d8a32b634f4b16bf898128a898e064&url=http%3A%2F%2Fe.weibo.com%2Fnzxtblog&url_id=25aff4b2460f88404989a35f77d08dcd472f46b1" class="nzxt"></a>
+<a href="#" class="close"></a>
+</div>
+</div>
+<!-- Element to pop up -->
+<div id="element_to_pop_up2">
+<div class="inner">
+<div class="popup_chassis">
+<a id="close_popup_chassis"><img src="assets/images/xnzxt_chassis_close.png.pagespeed.ic.KuItdCM2Pj.png" width="18" height="16"></a>
+<div class="wrap_chassis">
+<!--
+		<div class="item_chassis mid200">
+			<div class="thumb">
+				<img src="http://www.nzxt.com/assets/images/nzxt_chassis_mid200.png">
+			</div>
+			<div class="title">
+				<div class="span">200</div>
+				MID TOWER
+			</div>
+		</div>
+		<div class="item_chassis mid400">
+			<div class="thumb">
+				<img src="http://www.nzxt.com/assets/images/nzxt_chassis_mid400.png">
+			</div>
+			<div class="title">
+				<div class="span">400</div>
+				MID TOWER
+			</div>
+		</div>
+		<div class="item_chassis full500">
+			<div class="thumb">
+				<img src="http://www.nzxt.com/assets/images/nzxt_chassis_full500.png">
+			</div>
+			<div class="title">
+				<div class="span">500</div>
+				FULL TOWER
+			</div>
+		</div>
+		<div class="item_chassis ultra600">
+			<div class="thumb">
+				<img src="http://www.nzxt.com/assets/images/nzxt_chassis_ultra600.png">
+			</div>
+			<div class="title">
+				<div class="span">600</div>
+				ULTRA TOWER
+			</div>
+		</div>
+		<div class="item_chassis ultra800">
+			<div class="thumb">
+				<img src="http://www.nzxt.com/assets/images/nzxt_chassis_ultra800.png">
+			</div>
+			<div class="title">
+				<div class="span">800</div>
+				ULTRA+ TOWER
+			</div>
+		</div>
+		-->
+</div>
+<div class="clear"></div>
+<div class="headTable">
+<div>MOTHERBOARD<br>EXPANSION SLOTS</div>
+<div>MOTHERBOARD<br>COMPATIBILITY</div>
+<div>FANS</div>
+<div>CASE<br>DIMENSION (mm)</div>
+</div>
+<div class="tableWrap">
+<table summary="2007 Major IT Companies' Profit" id="one-column-emphasis">
+<tbody>
+<tr>
+<td style="border-left:0;border-top:0;font-size:24px">7</td>
+<td style="border-top:0;font-size:24px">7+</td>
+<td style="border-top:0;font-size:24px">8</td>
+<td style="border-top:0;font-size:24px">9</td>
+<td style="border-top:0;border-right:0;font-size:24px">9+</td>
+</tr>
+<tr>
+<td>ITX, m-ATX, ATX</td>
+<td>ITX, m-ATX, ATX</td>
+<td>ITX, m-ATX, ATX, E-ATX<br>
+(322mm x 272mm)
+</td>
+<td>
+ITX, m-ATX, ATX, E-ATX<br>
+(347mm x 272mm)
+</td>
+<td style="border-right:0">
+ITX, m-ATX, ATX<br>
+E-ATX, XL-ATX
+</td>
+</tr>
+<tr>
+<td style="font-size:24px">3+</td>
+<td style="font-size:24px">5+</td>
+<td style="font-size:24px">9+</td>
+<td style="font-size:24px">9+</td>
+<td style="border-right:0;font-size:24px">9+</td>
+</tr>
+<tr>
+<td>~258 x 575 x 495</td>
+<td>~245 x 547 x 567</td>
+<td>~245 x 547 x 567</td>
+<td>~245 x 547 x 567</td>
+<td style="border-right:0">~245 x 547 x 567</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="clear"></div>
+<div class="note">*Case dimensions are approximations and may vary between lines.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+</div>	</div>
+</div>
+<!-- LIVE CHAT TAB -->
+<div class="wcfbslide">
+<a id="chat"></a>
+<a id="close"></a>
+<a id="live" href="javascript: void(0);" onclick="javascript: window.open('http://www.nzxt.com/support/visitor/index.php?/Default/LiveChat/Chat/Request/_sessionID=/_promptType=chat/_proactive=0/_filterDepartmentID=/_randomNumber=ajoj5i2mmfh40iuehp4hajm6ozm9fkhi/_fullName=/_email=/', 'livechatwin', 'toolbar=0,location=0,directories=0,status=1,menubar=0,scrollbars=0,resizable=1,width=600,height=680');" class="livechatlink"></a>
+</div>
+<div id="notification" class="centered-content">
+<a class="close" href="#">close</a>
+<p></p>
+</div>
+<header>
+<div id="header">
+<div class="centered-content">
+<div id="login-panel" style="display:none">
+<!-- VBULLETIN LOGIN STARTS -->
+<form action="forum/login.php?do=login" method="post" onsubmit="md5hash(vb_login_password, vb_login_md5password, vb_login_md5password_utf, 0)">
+<!--<script type="text/javascript" src="/forum/clientscript/vbulletin_md5.js?v=380"></script>-->
+<table cellpadding="0" cellspacing="0" border="0" class="logintab" style="margin-bottom: 5px;">
+<tbody>
+<tr>
+<td style="padding-right:5px;"><input type="text" class="bginput2" style="font-size: 11px" name="vb_login_username" id="navbar_username" size="10" accesskey="u" tabindex="101" placeholder="Username"></td>
+<td style="padding-right:5px;"><input type="password" class="bginput2" style="font-size: 11px" name="vb_login_password" id="navbar_password" size="10" tabindex="102" placeholder="password"></td>
+<td><input type="submit" class="lbutton btn-rounded" value="Sign In" tabindex="104" title="Enter your username and password in the boxes provided to login, or click the 'register' button to create a profile for yourself." accesskey="s"></td>
+</tr>
+</tbody>
+</table>
+<input type="hidden" name="s" value="">
+<input type="hidden" name="securitytoken" value="guest">
+<input type="hidden" name="do" value="login">
+<input type="hidden" name="vb_login_md5password">
+<input type="hidden" name="vb_login_md5password_utf">
+<!-- / login form -->
+<input type="checkbox" name="cookieuser" value="1" tabindex="103" id="cb_cookieuser_navbar" accesskey="c" style="margin-right:3px;">Remember Me? <br/>
+<div id="register_link">
+<a href="user/register">Sign Up for Free</a> | <a href="user/forgot_password">Forgot Password</a>
+<!-- <a href="/forum/login.php?do=lostpw">Forgot Password</a> -->
+</div>
+</form>
+<!--VBULLETIN LOGIN ENDS -->
+</div>
+<div id="cart-panel" style="display:none">
+<!-- the sliding cartpanel -->
+<div class="panel-header">YOUR CART IS HUNGRY!</div>
+Put some products into your shopping cart, it is empty. If you sign in, your shopping cart contents will be accessible from anywhere.
+<br/><br/>
+<a href="shop/contents" style="float:right;">Go to shopping cart &raquo;</a>
+<!-- <div class="align-right"><a href="#" id="cart-close">Close [X]</a></div> -->
+</div>
+<div id="logo-container"><a href="/"><img src="data:image/png;base64,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" alt="NZXT Home" title="NZXT Home"/></a></div>
+<div id="nav-container">
+<ul>
+<li>
+<a href="products" id="nav_product">PRODUCTS</a>
+<div id="product_new">
+<ul>
+<li>
+<a href="category/products/1-cases" id="nav_product_cases">Cases</a>
+<ul>
+<li>
+<a href="category/products/12-phantom-series-cases">Phantom Series</a>
+<div>
+<img src="assets/images/495x120xphantom.jpg.pagespeed.ic.PRExIJkS0Y.jpg" width="495" height="120">
+<ul class="list_product">
+<li>
+<a href="product/detail/146-p240-phantom-mid-tower.html">
+<img src="assets/images/85x85xblank.gif.pagespeed.ic.Ukj61DcGaV.png" style="background-image:url(http://nzxt.com/uploads/product_images/product_images_thumb/146.png)" width="85" height="85">
+<p>Phantom 240</p>
+</a>
+</li>
+<li>
+<a href="product/detail/95-phantom-410-mid-tower-case.html">
+<img src="assets/images/85x85xblank.gif.pagespeed.ic.Ukj61DcGaV.png" style="background-image:url(http://nzxt.com/uploads/product_images/product_images_thumb/95.png)" width="85" height="85">
+<p>Phantom 410</p>
+</a>
+</li>
+<li>
+<a href="product/detail/34-phantom.html">
+<img src="assets/images/85x85xblank.gif.pagespeed.ic.Ukj61DcGaV.png" style="background-image:url(http://nzxt.com/uploads/product_images/product_images_thumb/34.png)" width="85" height="85">
+<p>Phantom</p>
+</a>
+</li>
+<li>
+<a href="product/detail/134-phantom-530.html">
+<img src="assets/images/85x85xblank.gif.pagespeed.ic.Ukj61DcGaV.png" style="background-image:url(http://nzxt.com/uploads/product_images/product_images_thumb/134.png)" width="85" height="85">
+<p>Phantom 530</p>
+</a>
+</li>
+<li>
+<a href="product/detail/118-phantom-630.html">
+<img src="assets/images/85x85xblank.gif.pagespeed.ic.Ukj61DcGaV.png" style="background-image:url(http://nzxt.com/uploads/product_images/product_images_thumb/118.png)" width="85" height="85">
+<p>Phantom 630</p>
+</a>
+</li>
+<li>
+<a href="product/detail/125-phantom-630-window-edition.html">
+<img src="assets/images/85x85xblank.gif.pagespeed.ic.Ukj61DcGaV.png" style="background-image:url(http://nzxt.com/uploads/product_images/product_images_thumb/125.png)" width="85" height="85">
+<p>Phantom 630 Windowed Edition</p>
+</a>
+</li>
+<li>
+<a href="product/detail/96-phantom-820-full-tower-caes.html">
+<img src="assets/images/85x85xblank.gif.pagespeed.ic.Ukj61DcGaV.png" style="background-image:url(http://nzxt.com/uploads/product_images/product_images_thumb/96.png)" width="85" height="85">
+<p>Phantom 820</p>
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<a href="category/products/14-h-series-cases">H Series</a>
+<div>
+<img src="assets/images/495x120xH.jpg.pagespeed.ic.kfUM71vSLe.jpg" width="495" height="120">
+<ul class="list_product">
+<li>
+<a href="product/detail/103-h2-case.html">
+<img src="assets/images/85x85xblank.gif.pagespeed.ic.Ukj61DcGaV.png" style="background-image:url(http://nzxt.com/uploads/product_images/product_images_thumb/103.png)" width="85" height="85">
+<p>H2</p>
+</a>
+</li>
+<li>
+<a href="product/detail/130-H230.html">
+<img src="assets/images/85x85xblank.gif.pagespeed.ic.Ukj61DcGaV.png" style="background-image:url(http://nzxt.com/uploads/product_images/product_images_thumb/130.png)" width="85" height="85">
+<p>H230</p>
+</a>
+</li>
+<li>
+<a href="product/detail/143-h440-performance-mid-tower.html">
+<img src="assets/images/85x85xblank.gif.pagespeed.ic.Ukj61DcGaV.png" style="background-image:url(http://nzxt.com/uploads/product_images/product_images_thumb/143.png)" width="85" height="85">
+<p>H440</p>
+</a>
+</li>
+<li>
+<a href="product/detail/149-h440-razer-edition-mid-tower.html">
+<img src="assets/images/85x85xblank.gif.pagespeed.ic.Ukj61DcGaV.png" style="background-image:url(http://nzxt.com/uploads/product_images/product_images_thumb/149.png)" width="85" height="85">
+<p>H440 Designed by Razer</p>
+</a>
+</li>
+<li>
+<a href="product/detail/120-H630.html">
+<img src="assets/images/85x85xblank.gif.pagespeed.ic.Ukj61DcGaV.png" style="background-image:url(http://nzxt.com/uploads/product_images/product_images_thumb/120.png)" width="85" height="85">
+<p>H630</p>
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<a href="category/products/27-source-series-cases">Source Series</a>
+<div>
+<img src="assets/images/insert_source.jpg.pagespeed.ce.QFWWVxw52W.jpg" width="495" height="120">
+<ul class="list_product">
+<li>
+<a href="product/detail/105-source-210-case.html">
+<img src="assets/images/85x85xblank.gif.pagespeed.ic.Ukj61DcGaV.png" style="background-image:url(http://nzxt.com/uploads/product_images/product_images_thumb/105.png)" width="85" height="85">
+<p>Source 210</p>
+</a>
+</li>
+<li>
+<a href="product/detail/107-source-220-case.html">
+<img src="assets/images/85x85xblank.gif.pagespeed.ic.Ukj61DcGaV.png" style="background-image:url(http://nzxt.com/uploads/product_images/product_images_thumb/107.png)" width="85" height="85">
+<p>Source 220</p>
+</a>
+</li>
+<li>
+<a href="product/detail/117-source-210-elite-case.html">
+<img src="assets/images/85x85xblank.gif.pagespeed.ic.Ukj61DcGaV.png" style="background-image:url(http://nzxt.com/uploads/product_images/product_images_thumb/117.png)" width="85" height="85">
+<p>Source 210 Elite</p>
+</a>
+</li>
+<li>
+<a href="product/detail/151-s340-mid-tower-atx-case.html">
+<img src="assets/images/85x85xblank.gif.pagespeed.ic.Ukj61DcGaV.png" style="background-image:url(http://nzxt.com/uploads/product_images/product_images_thumb/151.png)" width="85" height="85">
+<p>S340</p>
+</a>
+</li>
+<li>
+<a href="product/detail/137-source-530-full-tower-computer-case.html">
+<img src="assets/images/85x85xblank.gif.pagespeed.ic.Ukj61DcGaV.png" style="background-image:url(http://nzxt.com/uploads/product_images/product_images_thumb/137.png)" width="85" height="85">
+<p>Source 530</p>
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<a href="category/products/28-nzxt-concepts-cases">NZXT Concepts</a>
+<div>
+<img src="assets/images/495x120xnzxtconcepts.jpg.pagespeed.ic.VHuuxk9B1H.jpg" width="495" height="120">
+<ul class="list_product">
+<li>
+<a href="product/detail/109-guardian-921-rb-case.html">
+<img src="assets/images/85x85xblank.gif.pagespeed.ic.Ukj61DcGaV.png" style="background-image:url(http://nzxt.com/uploads/product_images/product_images_thumb/109.png)" width="85" height="85">
+<p>Guardian 921RB</p>
+</a>
+</li>
+<li>
+<a href="product/detail/110-lexa-s-case.html">
+<img src="assets/images/85x85xblank.gif.pagespeed.ic.Ukj61DcGaV.png" style="background-image:url(http://nzxt.com/uploads/product_images/product_images_thumb/110.png)" width="85" height="85">
+<p>Lexa S</p>
+</a>
+</li>
+<li>
+<a href="product/detail/111-switch-810-case.html">
+<img src="assets/images/85x85xblank.gif.pagespeed.ic.Ukj61DcGaV.png" style="background-image:url(http://nzxt.com/uploads/product_images/product_images_thumb/111.png)" width="85" height="85">
+<p>Switch 810</p>
+</a>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</li>
+<li>
+<a href="category/products/7-cooling" id="nav_product_cooling">Cooling</a>
+<ul>
+<li>
+<a href="category/products/8-cpu-coolers">Kraken Series</a>
+<div>
+<img src="assets/images/insert_kraken.jpg.pagespeed.ce._vZirqor5z.jpg" width="495" height="120">
+<ul class="list_product">
+<li>
+<a href="product/detail/138-kraken-g10-gpu-bracket.html">
+<img src="assets/images/85x85xblank.gif.pagespeed.ic.Ukj61DcGaV.png" style="background-image:url(http://nzxt.com/uploads/product_images/product_images_thumb/138.png)" width="85" height="85">
+<p>Kraken&trade; G10</p>
+</a>
+</li>
+<li>
+<a href="product/detail/150-kraken-x31-120mm-liquid-cooler.html">
+<img src="assets/images/85x85xblank.gif.pagespeed.ic.Ukj61DcGaV.png" style="background-image:url(http://nzxt.com/uploads/product_images/product_images_thumb/150.png)" width="85" height="85">
+<p>Kraken&trade; X31</p>
+</a>
+</li>
+<li>
+<a href="product/detail/82-kraken-x40-cpu-cooler.html">
+<img src="assets/images/85x85xblank.gif.pagespeed.ic.Ukj61DcGaV.png" style="background-image:url(http://nzxt.com/uploads/product_images/product_images_thumb/82.png)" width="85" height="85">
+<p>Kraken&trade; X40</p>
+</a>
+</li>
+<li>
+<a href="product/detail/145-kraken-x41-liquid-cooler.html">
+<img src="assets/images/85x85xblank.gif.pagespeed.ic.Ukj61DcGaV.png" style="background-image:url(http://nzxt.com/uploads/product_images/product_images_thumb/145.png)" width="85" height="85">
+<p>Kraken&trade; X41</p>
+</a>
+</li>
+<li>
+<a href="product/detail/83-kraken-x60-cpu-cooler.html">
+<img src="assets/images/85x85xblank.gif.pagespeed.ic.Ukj61DcGaV.png" style="background-image:url(http://nzxt.com/uploads/product_images/product_images_thumb/83.png)" width="85" height="85">
+<p>Kraken&trade; X60</p>
+</a>
+</li>
+<li>
+<a href="product/detail/147-kraken-x61-liquid-cooler.html">
+<img src="assets/images/85x85xblank.gif.pagespeed.ic.Ukj61DcGaV.png" style="background-image:url(http://nzxt.com/uploads/product_images/product_images_thumb/147.png)" width="85" height="85">
+<p>Kraken&trade; X61</p>
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<a href="category/products/9-case-fans">Case Fans</a>
+<div>
+<img src="assets/images/insert_case_fans.jpg.pagespeed.ce.kLmGN1ojJy.jpg" width="495" height="120">
+<h3>FN Series</h3>
+<ul class="list_product">
+<li>
+<a href="product/detail/86-fn-120rb-case-fan">
+<img src="assets/images/85x85xblank.gif.pagespeed.ic.Ukj61DcGaV.png" style="background-image:url(http://nzxt.com/uploads/product_images/product_images_thumb/86.png)" width="85" height="85">
+<p>FN 120RB</p>
+</a>
+</li>
+<li>
+<a href="product/detail/87-fn-140rb-case-fan">
+<img src="assets/images/85x85xblank.gif.pagespeed.ic.Ukj61DcGaV.png" style="background-image:url(http://nzxt.com/uploads/product_images/product_images_thumb/87.png)" width="85" height="85">
+<p>FN 140RB</p>
+</a>
+</li>
+<li>
+<a href="product/detail/88-fn-200rb-case-fan">
+<img src="assets/images/85x85xblank.gif.pagespeed.ic.Ukj61DcGaV.png" style="background-image:url(http://nzxt.com/uploads/product_images/product_images_thumb/88.png)" width="85" height="85">
+<p>FN 200RB</p>
+</a>
+</li>
+<li>
+<a href="product/detail/141-fn-v2-performance-case-fan.html">
+<img src="assets/images/85x85xblank.gif.pagespeed.ic.Ukj61DcGaV.png" style="background-image:url(http://nzxt.com/uploads/product_images/product_images_thumb/141.png)" width="85" height="85">
+<p>FN V2 120mm</p>
+</a>
+</li>
+<li>
+<a href="product/detail/142-fn-v2-140-performance-case-fan.html">
+<img src="assets/images/85x85xblank.gif.pagespeed.ic.Ukj61DcGaV.png" style="background-image:url(http://nzxt.com/uploads/product_images/product_images_thumb/141.png)" width="85" height="85">
+<p>FN V2 140mm</p>
+</a>
+</li>
+</ul>
+<h3>FS Series</h3>
+<ul class="list_product">
+<li>
+<a href="product/detail/89-fs-200led-case-fan">
+<img src="assets/images/85x85xblank.gif.pagespeed.ic.Ukj61DcGaV.png" style="background-image:url(http://nzxt.com/uploads/product_images/product_images_thumb/89.png)" width="85" height="85">
+<p>FS 200LED</p>
+</a>
+</li>
+<li>
+<a href="product/detail/90-fs-200rb-case-fan">
+<img src="assets/images/85x85xblank.gif.pagespeed.ic.Ukj61DcGaV.png" style="background-image:url(http://nzxt.com/uploads/product_images/product_images_thumb/90.png)" width="85" height="85">
+<p>FS 200RB</p>
+</a>
+</li>
+</ul>
+<h3>FX Series</h3>
+<ul class="list_product">
+<li>
+<a href="product/detail/91-fx-120lb-case-fan">
+<img src="assets/images/85x85xblank.gif.pagespeed.ic.Ukj61DcGaV.png" style="background-image:url(http://nzxt.com/uploads/product_images/product_images_thumb/91.png)" width="85" height="85">
+<p>FX 120LB</p>
+</a>
+</li>
+<li>
+<a href="product/detail/92-fx-140lb-case-fan">
+<img src="assets/images/85x85xblank.gif.pagespeed.ic.Ukj61DcGaV.png" style="background-image:url(http://nzxt.com/uploads/product_images/product_images_thumb/92.png)" width="85" height="85">
+<p>FX 140LB</p>
+</a>
+</li>
+<li>
+<a href="product/detail/126-fx-140lb-pwm-case-fan.html">
+<img src="assets/images/85x85xblank.gif.pagespeed.ic.Ukj61DcGaV.png" style="background-image:url(http://nzxt.com/uploads/product_images/product_images_thumb/126.png)" width="85" height="85">
+<p>FX 140LB PWM</p>
+</a>
+</li>
+</ul>
+<h3>FZ Series</h3>
+<ul class="list_product">
+<li>
+<a href="product/detail/93-fz-120mm-led-case-fan">
+<img src="assets/images/85x85xblank.gif.pagespeed.ic.Ukj61DcGaV.png" style="background-image:url(http://nzxt.com/uploads/product_images/product_images_thumb/93.png)" width="85" height="85">
+<p>FZ 120mm LED</p>
+</a>
+</li>
+<li>
+<a href="product/detail/94-fz-120mm-non-led-case-fan">
+<img src="assets/images/85x85xblank.gif.pagespeed.ic.Ukj61DcGaV.png" style="background-image:url(http://nzxt.com/uploads/product_images/product_images_thumb/94.png)" width="85" height="85">
+<p>FZ 120mm nonLED</p>
+</a>
+</li>
+<li>
+<a href="product/detail/115-fz-140mm-led-case-fan">
+<img src="assets/images/85x85xblank.gif.pagespeed.ic.Ukj61DcGaV.png" style="background-image:url(http://nzxt.com/uploads/product_images/product_images_thumb/115.png)" width="85" height="85">
+<p>FZ 140mm LED</p>
+</a>
+</li>
+<li>
+<a href="product/detail/116-fz-14mm-nonled-case-fan">
+<img src="assets/images/85x85xblank.gif.pagespeed.ic.Ukj61DcGaV.png" style="background-image:url(http://nzxt.com/uploads/product_images/product_images_thumb/116.png)" width="85" height="85">
+<p>FZ 140mm nonLED</p>
+</a>
+</li>
+<li>
+<a href="product/detail/122-fz-200mm-non-led-case-fan">
+<img src="assets/images/85x85xblank.gif.pagespeed.ic.Ukj61DcGaV.png" style="background-image:url(http://nzxt.com/uploads/product_images/product_images_thumb/122.png)" width="85" height="85">
+<p>FZ 200mm nonLED</p>
+</a>
+</li>
+<li>
+<a href="product/detail/121-fz-200mm-led-case-fan">
+<img src="assets/images/85x85xblank.gif.pagespeed.ic.Ukj61DcGaV.png" style="background-image:url(http://nzxt.com/uploads/product_images/product_images_thumb/121.png)" width="85" height="85">
+<p>FZ 200mm LED</p>
+</a>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</li>
+<li>
+<a href="category/products/18-power-supplies">Power Supplies</a>
+<ul>
+<li>
+<a href="category/products/38-hale-82-v2-power-supplies">HALE82</a>
+<div>
+<img src="assets/images/495x120xhale82.jpg.pagespeed.ic.hYmOd_yOnM.jpg" width="495" height="120">
+<div class="clear"></div>
+<h3>Hale 82V2</h3>
+<ul class="list_product">
+<li>
+<a href="product/detail/131-hale-82-v2-power-supplies">
+<img src="assets/images/85x85xblank.gif.pagespeed.ic.Ukj61DcGaV.png" style="background-image:url(http://nzxt.com/uploads/product_images/product_images_thumb/131.png)" width="85" height="85">
+<p>550W</p>
+</a>
+</li>
+<li>
+<a href="product/detail/132-hale-82-v2-power-supplies">
+<img src="assets/images/85x85xblank.gif.pagespeed.ic.Ukj61DcGaV.png" style="background-image:url(http://nzxt.com/uploads/product_images/product_images_thumb/132.png)" width="85" height="85">
+<p>700W</p>
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<a href="category/products/36-hale-90-v2-power-supplies">HALE90</a>
+<div>
+<img src="assets/images/495x120xhale90.jpg.pagespeed.ic.CySL0jhnLc.jpg" width="495" height="120">
+<div class="clear"></div>
+<h3>Hale 90 V2</h3>
+<ul class="list_product">
+<li>
+<a href="product/detail/119-hale90v2-850w-power-supply">
+<img src="assets/images/85x85xblank.gif.pagespeed.ic.Ukj61DcGaV.png" style="background-image:url(http://nzxt.com/uploads/product_images/product_images_thumb/119.png)" width="85" height="85">
+<p>850W</p>
+</a>
+</li>
+<li>
+<a href="product/detail/127-hale90-v2-1000w-power-supply">
+<img src="assets/images/85x85xblank.gif.pagespeed.ic.Ukj61DcGaV.png" style="background-image:url(http://nzxt.com/uploads/product_images/product_images_thumb/127.png)" width="85" height="85">
+<p>1000W</p>
+</a>
+</li>
+<li>
+<a href="product/detail/128-hale90-v2-1200w-power-supply">
+<img src="assets/images/85x85xblank.gif.pagespeed.ic.Ukj61DcGaV.png" style="background-image:url(http://nzxt.com/uploads/product_images/product_images_thumb/128.png)" width="85" height="85">
+<p>1200W</p>
+</a>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</li>
+<li>
+<a href="category/products/15-case-accessories">Case Accessories</a>
+<ul>
+<li>
+<a href="category/products/29-panel-devices">Panel Devices</a>
+<div>
+<img src="assets/images/insert_panel_devices.jpg.pagespeed.ce.c2A2ffgQRi.jpg" width="495" height="120">
+<ul class="list_product">
+<li>
+<a href="product/detail/97-aperture-m-case-accessory.html">
+<img src="assets/images/85x85xblank.gif.pagespeed.ic.Ukj61DcGaV.png" style="background-image:url(http://nzxt.com/uploads/product_images/product_images_thumb/97.png)" width="85" height="85">
+<p>Aperture M</p>
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<a href="category/products/10-fan-control">Fan Control</a>
+<div>
+<img src="assets/images/495x120xfancontrol.jpg.pagespeed.ic.zsd9xZ2e0Q.jpg" width="495" height="120">
+<ul class="list_product">
+<li>
+<a href="product/detail/77-sentry-2-fan-control.html">
+<img src="assets/images/85x85xblank.gif.pagespeed.ic.Ukj61DcGaV.png" style="background-image:url(http://nzxt.com/uploads/product_images/product_images_thumb/77.png)" width="85" height="85">
+<p>Sentry 2</p>
+</a>
+</li>
+<li>
+<a href="product/detail/78-sentry-lx-fan-control.html">
+<img src="assets/images/85x85xblank.gif.pagespeed.ic.Ukj61DcGaV.png" style="background-image:url(http://nzxt.com/uploads/product_images/product_images_thumb/78.png)" width="85" height="85">
+<p>Sentry LX</p>
+</a>
+</li>
+<li>
+<a href="product/detail/79-sentry-lxe-fan-control.html">
+<img src="assets/images/85x85xblank.gif.pagespeed.ic.Ukj61DcGaV.png" style="background-image:url(http://nzxt.com/uploads/product_images/product_images_thumb/79.png)" width="85" height="85">
+<p>Sentry LXE</p>
+</a>
+</li>
+<li>
+<a href="product/detail/80-sentry-mesh-fan-control.html">
+<img src="assets/images/85x85xblank.gif.pagespeed.ic.Ukj61DcGaV.png" style="background-image:url(http://nzxt.com/uploads/product_images/product_images_thumb/80.png)" width="85" height="85">
+<p>Sentry Mesh</p>
+</a>
+</li>
+<li>
+<a href="product/detail/129-sentry-mix-2-fan-control.html">
+<img src="assets/images/85x85xblank.gif.pagespeed.ic.Ukj61DcGaV.png" style="background-image:url(http://nzxt.com/uploads/product_images/product_images_thumb/129.png)" width="85" height="85">
+<p>Sentry Mix 2</p>
+</a>
+</li>
+<li>
+<a href="product/detail/144-sentry-3-fan-controller.html">
+<img src="assets/images/85x85xblank.gif.pagespeed.ic.Ukj61DcGaV.png" style="background-image:url(http://nzxt.com/uploads/product_images/product_images_thumb/144.png)" width="85" height="85">
+<p>Sentry 3</p>
+</a>
+</li>
+<li>
+<a href="product/detail/148-GRID-digital-fan-controller.html">
+<img src="assets/images/85x85xblank.gif.pagespeed.ic.Ukj61DcGaV.png" style="background-image:url(http://nzxt.com/uploads/product_images/product_images_thumb/148.png)" width="85" height="85">
+<p>GRID+</p>
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<a href="category/products/19-premium-cables">Premium Cables</a>
+<div>
+<img src="assets/images/insert_cables.jpg.pagespeed.ce.w5Xld1_Uu5.jpg" width="495" height="120">
+<ul class="list_product">
+<li>
+<a href="category/products/19-premium-cables">
+<img src="assets/images/85x85xblank.gif.pagespeed.ic.Ukj61DcGaV.png" style="background-image:url(http://nzxt.com/uploads/product_images/product_images_thumb/39.png)" width="85" height="85">
+<p>Cables</p>
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<a href="category/products/30-case-lighting">Lighting</a>
+<div>
+<img src="assets/images/insert_lighting.jpg.pagespeed.ce.UUVwO5gfCU.jpg" width="495" height="120">
+<ul class="list_product">
+<li>
+<a href="product/detail/98-hue-case-accessory.html">
+<img src="assets/images/85x85xblank.gif.pagespeed.ic.Ukj61DcGaV.png" style="background-image:url(http://nzxt.com/uploads/product_images/product_images_thumb/98.png)" width="85" height="85">
+<p>HUE</p>
+</a>
+</li>
+<li>
+<a href="product/detail/101-sleeved-led-kit-case-accessory.html">
+<img src="assets/images/85x85xblank.gif.pagespeed.ic.Ukj61DcGaV.png" style="background-image:url(http://nzxt.com/uploads/product_images/product_images_thumb/101.png)" width="85" height="85">
+<p>Sleeved LED Kit</p>
+</a>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<a href="category/products/26-internal-accessories">Internal Accessories</a>
+<div>
+<img src="assets/images/insert_internal_accessories.jpg.pagespeed.ce.JLFjnkyut3.jpg" width="495" height="120">
+<ul class="list_product">
+<li>
+<a href="product/detail/99-iu01-usb-expansion-case-accessory.html">
+<img src="assets/images/85x85xblank.gif.pagespeed.ic.Ukj61DcGaV.png" style="background-image:url(http://nzxt.com/uploads/product_images/product_images_thumb/99.png)" width="85" height="85">
+<p>IU01 USB Expansion</p>
+</a>
+</li>
+<li>
+<a href="product/detail/123-grid-fan-hub.html">
+<img src="assets/images/85x85xblank.gif.pagespeed.ic.Ukj61DcGaV.png" style="background-image:url(http://nzxt.com/uploads/product_images/product_images_thumb/123.png)" width="85" height="85">
+<p>Grid</p>
+</a>
+</li>
+<li>
+<a href="product/detail/148-GRID-digital-fan-controller.html">
+<img src="assets/images/85x85xblank.gif.pagespeed.ic.Ukj61DcGaV.png" style="background-image:url(http://nzxt.com/uploads/product_images/product_images_thumb/148.png)" width="85" height="85">
+<p>GRID+</p>
+</a>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</li>
+<li>
+<a href="category/products/20-parts">Parts</a>
+<ul>
+<li>
+<a href="category/products/31-panels">Panels</a>
+<div class="one_sub_nav_list">
+<img src="assets/images/insert_phantom_window_panel.jpg.pagespeed.ce.CqRDje4JxF.jpg" width="495" height="120">
+<ul class="list_product">
+<li>
+<a href="product/detail/100-phantom-window-panel-case-accessory.html">
+<img src="assets/images/85x85xblank.gif.pagespeed.ic.Ukj61DcGaV.png" style="background-image:url(http://nzxt.com/uploads/product_images/product_images_thumb/100.png)" width="85" height="85">
+<p>Phantom Window Panel</p>
+</a>
+</li>
+<li>
+<a href="product/detail/135-phantom-h-630-window-accessory.html">
+<img src="assets/images/85x85xblank.gif.pagespeed.ic.Ukj61DcGaV.png" style="background-image:url(http://nzxt.com/uploads/product_images/product_images_thumb/135.png)" width="85" height="85">
+<p>630 Window Panel</p>
+</a>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</li>
+</ul>
+</div>	</li>
+<!--
+					<li>
+						<a href="/page/reseller_continent/europe">WORLDWIDE</a>
+						<div id="shop">
+							<div id="left">
+								<img src="http://www.nzxt.com/assets/images/dropdown_nzxt_region.png" />
+								<p>If you're outside the United States you can still get NZXT products from distributors in your region.</p>
+								<br/>
+								<a href="/page/reseller_continent/europe">See Regions</a>
+							</div>
+							<div id="right">
+								<strong>Select your region:</strong><br/>
+																	<a href="/page/reseller_continent/north_america" style="text-transform:capitalize">
+										north america									</a>
+									<br/>
+																	<a href="/page/reseller_continent/south_america" style="text-transform:capitalize">
+										south america									</a>
+									<br/>
+																	<a href="/page/reseller_continent/europe" style="text-transform:capitalize">
+										europe									</a>
+									<br/>
+																	<a href="/page/reseller_continent/asia" style="text-transform:capitalize">
+										asia									</a>
+									<br/>
+																	<a href="/page/reseller_continent/africa" style="text-transform:capitalize">
+										africa									</a>
+									<br/>
+																	<a href="/page/reseller_continent/oceania" style="text-transform:capitalize">
+										oceania									</a>
+									<br/>
+															</div>
+						</div>
+					</li>-->
+<li>
+<a href="http://store.nzxt.com">BUY</a>
+<div id="shop">
+<div id="left">
+<img src="assets/images/x2dropdown_nzxt_store.png.pagespeed.ic.yHTOr-xgGp.png" width="160" height="99"/>
+<p>Browse and buy all the latest products NZXT has to offer</p>
+<br/>
+<a href="http://store.nzxt.com">Buy Now</a>
+</div>
+<div id="right">
+<strong>Select your region:</strong><br/>
+<a href="page/reseller_continent/north_america" style="text-transform:capitalize">
+north america	</a>
+<br/>
+<a href="page/reseller_continent/south_america" style="text-transform:capitalize">
+south america	</a>
+<br/>
+<a href="page/reseller_continent/europe" style="text-transform:capitalize">
+europe	</a>
+<br/>
+<a href="page/reseller_continent/asia" style="text-transform:capitalize">
+asia	</a>
+<br/>
+<a href="page/reseller_continent/africa" style="text-transform:capitalize">
+africa	</a>
+<br/>
+<a href="page/reseller_continent/oceania" style="text-transform:capitalize">
+oceania	</a>
+<br/>
+</div>
+</div>
+</li>
+<li style="width:50px">
+<a href="http://cam.nzxt.com/" target="_blank">CAM</a>
+</li>
+<!--<li>
+						<a href="/forums">COMMUNITY</a>
+						<div id="community">
+							<div id="left">
+								<img src="http://www.nzxt.com/assets/images/dropdown_nzxt_lounge.png" />
+								<p>Interact with your fellow peers in our exclusive members-only lounge where you can ask for advice.</p>
+								<br>
+								<a href="/forums">Shop Now</a>
+							</div>
+							<div id="right">
+								<ul>
+									<li><a href="https://www.facebook.com/nzxtcorp" id="facebook" target="_blank">Join us on</a></li>
+									<li><a href="https://twitter.com/NZXTCorp" id="twitter" target="_blank">Follow us on</a></li>
+									<li><a href="http://youtube.com/nzxtus" id="youtube" target="_blank">Watch us on</a></li>
+									<li><a href="http://steamcommunity.com/groups/nzxtgaming" id="steam" target="_blank">Join us on</a> </li>
+									<li><a href="http://www.reddit.com/r/nzxt" id="reddit" target="_blank">Subscribe to us on</a> </li>
+								</ul>
+							</div>
+						</div>
+					</li>-->
+<li>
+<a href="page/about_us">ABOUT</a>
+<div id="about">
+<div id="left">
+<img src="assets/images/xdropdown_nzxt_blog.png.pagespeed.ic.mBxcQrdHPM.png" width="127" height="99"/>
+<p>Keep up to date with NZXT news and press releases</p>
+<br>
+<a href="http://blog.nzxt.com">Shop Now</a>
+</div>
+<div id="right">
+<ul>
+<li><a href="page/about_us">About Us</a></li>
+<li><a href="page/about_us#careers">Careers</a></li>
+<li><a href="page/contact_us">Contact Us</a></li>
+<li><a href="http://nzxtcorp.wordpress.com" target="_blank">NZXT Blog</a></li>
+<!-- <li><a href="http://www.nzxt.com/page/multimedia">Multimedia</a></li> -->
+<!-- <li><a href="http://www.nzxt.com/page/team">NZXT Team</a></li> -->
+</ul>
+<!-- <img src="http://www.nzxt.com/assets/images/dropdown_nzxt_team.png" /> -->
+</div>
+</div>
+</li>
+<li>
+<a href="support">SUPPORT</a>
+<div id="support">
+<div id="left">
+<img src="assets/images/xdropdown_nzxt_support.png.pagespeed.ic.hBRvlxntuP.png" width="232" height="99"/>
+<p>Need help with your NZXT product? Help is only a few clicks away</p>
+<br>
+<a href="support">Shop Now</a>
+</div>
+<div id="right">
+<ul>
+<!--<li>-->
+<!-- BEGIN FUSION TAG CODE - DO NOT EDIT! -->
+<!--	<a href="javascript: void(0);" id="help" onclick="javascript: window.open('http://www.nzxt.com/support/visitor/index.php?/Default/LiveChat/Chat/Request/_sessionID=/_promptType=chat/_proactive=0/_filterDepartmentID=/_randomNumber=ajoj5i2mmfh40iuehp4hajm6ozm9fkhi/_fullName=/_email=/', 'livechatwin', 'toolbar=0,location=0,directories=0,status=1,menubar=0,scrollbars=0,resizable=1,width=600,height=680');" class="livechatlink">
+										Get Instant Help
+										</a>-->
+<!-- END FUSION TAG CODE - DO NOT EDIT! -->
+<!--</li>-->
+<li><a href="support/downloads">Downloads</a></li>
+<li><a href="page/warranty">Warranty</a></li>
+<li><a href="forums">Get Help from Your Peers</a></li>
+</ul>
+<a href="forums"><img src="assets/images/xicon_dropdown_nzxtlounge.png.pagespeed.ic._4YNiGHm07.png" width="111" height="22"/></a>
+</div>
+</div>
+</li>
+</ul>
+</div>
+<div id="searchbox-container">
+<!-- <input type="text" name="searchbox" id="searchbox" placeholder="Search NZXT" />
+				<button type="submit">Search</button> -->
+<form id="searchbox_005155437649830424042:sr9oer7szcy" action="page/search">
+<input value="005155437649830424042:sr9oer7szcy" name="cx" type="hidden"/>
+<input value="FORID:11" name="cof" type="hidden"/>
+<input id="q" name="q" size="70" type="text" placeholder="Search NZXT"/>
+<!-- <input value="Search" name="sa" type="submit"/>  -->
+<button type="submit">Search</button>
+</form>
+</div>
+</div>
+</div>
+</header>
+<div id="slider_container" style="">
+<div id="slider_shadow"></div>
+<div id="slider">
+<div class="slider_item" style="background:url(uploads/homepage/xH440Razer_Homepagebanner_new.jpg.pagespeed.ic.20wCMi_QeP.jpg) no-repeat center #fff">
+<a class="slider_hotspot" href="product/detail/149-h440-razer-edition-mid-tower.html"></a>
+</div>
+<div class="slider_item" style="background:url(uploads/homepage/xMain_Site_Banner2560x400.jpg.pagespeed.ic.2lJvoY9l2A.jpg) no-repeat center #fff">
+<a class="slider_hotspot" href="product/detail/151-s340-mid-tower-atx-case.html"></a>
+</div>
+<div class="slider_item" style="background:url(uploads/homepage/xMain_Site_Banner2560x400-1920.jpg.pagespeed.ic.vwIMBiDbNr.jpg) no-repeat center #fff">
+<a class="slider_hotspot" href="product/detail/147-kraken-x61-liquid-cooler.html"></a>
+</div>
+</div>
+<div id="slider_control">
+<a href="#" id="prev"><img src="data:image/png;base64,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"/></a>
+<a href="#" id="next"><img src="data:image/png;base64,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"/></a>
+</div>
+</div>
+<div id="content">
+<div class="centered-content">
+<div id="homepage-promo-box-container">
+<div id="featured_box">
+<h3>FEATURED REVIEW</h3>
+<div id="featured_reviews_cycle">
+<div>
+<img src="uploads/sources/xoverclock3d.png.pagespeed.ic.bRjj6VIdWn.png" class="promo-thumb" width="90" height="90"/>
+<h4><a href="http://www.overclock3d.net/reviews/audio/nzxt_source_340_-_s340_review/1" target="_blank">Overclock3D</a></h4>
+<p>
+We would go as far as saying this is probably the best case under the £80 mark on the market at this moment in time and&#8230;	<br><br><a href="http://www.overclock3d.net/reviews/audio/nzxt_source_340_-_s340_review/1" target="_blank">See review</a> <!-- | <a href="#">More reviews</a> -->
+</p>
+<div id="product_review">
+<div id="right">
+<a href="product/detail/151" class="btn">See product ></a>
+</div>
+<div id="left">
+<img src="assets/php/32x32xthumb.php,qsrc=,_uploads,_product_images,_case_s340,_S340-main370x.png,aw=32,ah=32,azc=1.pagespeed.ic.kWWe3z5SgF.png" width="32" height="32"/>
+Online review of
+<span><a href="product/detail/151">S340</a></span>
+</div>
+</div>
+</div>
+<div>
+<img src="uploads/sources/xxtremehardware.png.pagespeed.ic.TdYq5tnBHt.png" class="promo-thumb" width="90" height="90"/>
+<h4><a href="http://www.xtremehardware.com/recensioni/case-e-modding/nzxt-h440-il-case-ideato-per-i-modders-2014102710296/" target="_blank">Xtreme Hardware</a></h4>
+<p>
+Il nuovo case prodotto da NZXT soddisfa ogni esigenza di eventuali utenti che hanno sempre cercato un case con un midplate,&#8230;	<br><br><a href="http://www.xtremehardware.com/recensioni/case-e-modding/nzxt-h440-il-case-ideato-per-i-modders-2014102710296/" target="_blank">See review</a> <!-- | <a href="#">More reviews</a> -->
+</p>
+<div id="product_review">
+<div id="right">
+<a href="product/detail/143" class="btn">See product ></a>
+</div>
+<div id="left">
+<img src="assets/php/32x32xthumb.php,qsrc=,_uploads,_product_images,_case_h440,_H440_White_Main.png,aw=32,ah=32,azc=1.pagespeed.ic._4i6srZ7KZ.png" width="32" height="32"/>
+Online review of
+<span><a href="product/detail/143">H440</a></span>
+</div>
+</div>
+</div>
+<div>
+<img src="uploads/sources/xpureoverclock.png.pagespeed.ic.pfHcc8v94o.png" class="promo-thumb" width="90" height="90"/>
+<h4><a href="http://www.pureoverclock.com/Review-detail/nzxt-s340-case-review/1/" target="_blank">Pure Overclock</a></h4>
+<p>
+We feel that NZXT really hit the spot with its price to performance/feature ratio and earns one of our highest awards.	<br><br><a href="http://www.pureoverclock.com/Review-detail/nzxt-s340-case-review/1/" target="_blank">See review</a> <!-- | <a href="#">More reviews</a> -->
+</p>
+<div id="product_review">
+<div id="right">
+<a href="product/detail/151" class="btn">See product ></a>
+</div>
+<div id="left">
+<img src="assets/php/32x32xthumb.php,qsrc=,_uploads,_product_images,_case_s340,_S340-main370x.png,aw=32,ah=32,azc=1.pagespeed.ic.kWWe3z5SgF.png" width="32" height="32"/>
+Online review of
+<span><a href="product/detail/151">S340</a></span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="promo_box">
+<h3>Mind of NZXT</h3>
+<a href="http://blog.nzxt.com/2014/10/20/cam-v-1-1-8-release-notes/">
+<img alt="" title="" src="assets/php/280x190xthumb.php,qsrc=,_uploads,_homepage,_center_promos,_118thumbCAM.jpg,aw=280,ah=190,azc=1.pagespeed.ic.VoLKjV2RkI.jpg" width="280" height="190" class="promo-middle"/>
+</a>
+<!-- <span></span>
+							<h4><a href="http://blog.nzxt.com/2014/10/20/cam-v-1-1-8-release-notes/">Borderlands 2, what a fun game</a></h4>
+							<p class="date">January 24, 2013</p>
+							<p class="content">Title says it all; Borderlands 2 is a REALLY, really, really, fun game. In addition to the jam-packed action, the storytelling itself is entertaining,&#8230; <a href="http://blog.nzxt.com/2014/10/20/cam-v-1-1-8-release-notes/">more</a></p>
+							<a href="http://nzxtcorp.wordpress.com/" target="_blank" id="more_blog">More blogs</a> -->
+</div>
+<div id="follow_box">
+<h3>FOLLOW NZXT</h3>
+<ul id="social_links">
+<li><a href="https://www.facebook.com/nzxtcorp" target="_blank"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAArlBMVEUeQ4keQ4keQ4keQ4keQ4keQ4keQ4keQ4keQ4keQ4keQ4keQ4keQ4keQ4keQ4keQ4keQ4keQ4keQ4keQ4keQ4keQ4keQ4keQ4keQ4keQ4keQ4keQ4keQ4keQ4keQ4keQ4keQ4keQ4keQ4keQ4keQ4keQ4keQ4keQ4keQ4keQ4keQ4keQ4keQ4keQ4keQ4keQ4keQ4keQ4keQ4keQ4keQ4keQ4keQ4keQ4keQ4keQ4kWKA2yAAAAOXRSTlMAAQIDCA8QHh8pLTM2OTo9PkBHTE5VW2hzdnh6goOHipmqrrGys7W2t7m8wcXJy8zP1tfb3+Xr8v1pxUvEAAAA0UlEQVRIx+3W2Q6CMBAF0OK+oILFfUUFVEREQfT/f0zMYCSQwEyib71PbTInTTpNMywIiQnYkxwWUkUoiCC/JceZ1u30+oMlltwUFqeKJJfKR7A2jjxqjEpWX8GaONJIkBaK+HH15ORdPR9FDiBGhL5sgewJZEcnBhCDQCwgFoE4QBwcmXLONRmIrEUbvi4iySZCxkVEyZANnZzJpHwvIvXMKYU3thhGUaFYfa/nuL64QFxCK00g5n/fmCCCZEnOL24DsdPDVc4Ip0ulKJKeGuFeP2HgftyAWboAAAAASUVORK5CYII="/></a></li>
+<li><a href="https://twitter.com/NZXTCorp" target="_blank"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAABHVBMVEUoquEoquEoquEoquEoquEoquEoquEoquEoquEoquEoquEoquEoquEoquEoquEoquEoquEoquEoquEoquEoquEoquEoquEoquEoquEoquEoquEoquEoquEoquEoquEoquEoquEoquEoquEoquEoquEoquEoquEoquEoquEoquEoquEoquEoquEoquEoquEoquEoquEoquEoquEoquEoquEoquEoquEoquEoquEoquEoquEoquEoquEoquEoquEoquEoquEoquEoquEoquEoquEoquEoquEoquEoquEoquEoquEoquEoquEoquEoquEoquEoquEoquEoquEoquEoquEoquEoquEoquEoquEoquEoquEoquEoquEoquEoquGnW8wIAAAAXnRSTlMAAQIDBAcKDBARFxgaHiEiIygsLjI0Ojs9P0BBSE5RUlRWWFtlaG90dXd5f4CGioyNkJKUlpefoaOlq66vsLG3uru8v8DBwsPIzNXW2Nnc3+Dh5OXo6e/x8vr7/P3+A1WXjAAAATBJREFUSMdjCI4gEQQzxJEMGCJI1RExqmVUCw4Q4+HgBWFF49ISg6pDl5eBgUHEKi7OWysUlxYjaWQdsgwQoKrIoI7TYcoMSgiODgMcqHrZReHQIsPAIBYAZYcjdHCIs9vH4tAiD5RnM4T4yIEBCbjhdJgxWJ5fPxDI9kDS4YMnkLkhSpikNS0NGBFawnFqiQ7xF2bAAljDcGqJkZSTYsSihQ9P7GswYAWyeLSEYNeihy+N2WLV4os3WXoqcGLoEMWfkt21BTG0uODXYoLpLAlC+UUTQ0sQwSxmzMXAjKzDkphc6SqApEOfmIzsqsCC0GGAP+/H+lrYmqsJIVnB70iouPBTQfE3p04kESVMkKkcD0Q9r6JZGLGFUqSXk7WNs2/saJk8qoVaWshoXJHehAMAl8AHAX+jX/cAAAAASUVORK5CYII="/></a></li>
+<li><a href="http://youtube.com/nzxtus" target="_blank"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAABvFBMVEXsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIyrsIypYsDUyAAAAk3RSTlMAAQIDBAUGBwgKCwwNDg8SFhcYGx0gISIjJCUmJykqKy4wMzU2ODo8QEhLTFFaW1xeYWJjZGZoa2xtbnBxcnR2d3l8hYiMjY6PkZKTlJWWl5iZm5yen6Cho6Slpqeoq6ytrq+ytLW2t7i5vL2+v8DCw8TGyczNzs/S09XX2Nrf4+Xm5+nq6+7w8vP09fb4+fr7/f7Kqh26AAABuElEQVRIx+3W6VdMcRzH8TcSGrfsaUQzIks0Qsg2ydKEYTQVGiWzGUu2ylLURRhGU3c+/7BHc5wj5/a7nngyn+ev89s+5/y+2HmPsZHnkPcq8hXyX4gjSSp5IZ/3JRVrmfdCFtki8HaWbqaJ6/25x3r7rJSxTcgsDb5SYS18P1/jEDe6sf2E1EdhfezmNoe7RqSfnMLIH47ucEgYkadMK4zqw1cbZUgyTOgC8ndFmmS4sSTjGuY5I/Gay4wakWz1pBYC+DQFVtZDx2xJP02e8ttwpCeauBaJ9KeHIr2pe3duDH1xJ2M+lsTKuJG5lfgsq7YKoKp2RRnNupCLtKm4qBBA64/6MulyIR20pKV0M0BIVpkcdiGdwIc3rIlu6ji+Z2Eys4qejyeh3YWcBmam8Cv4emKj5tUa0LiaOLo82aqdydFdWv3q+qUZFDYmQZG9fao4pzNmpOH+g6DIDXYXz+6tMyHbVTeSCoixviuf6D3kSk4AKrBB75Ro1AsdaVZMbYSWWSUxACnnybHNua/2Oh5q0P2SXy5tWDXwyK2Wnfwl7e7lHzi4+48cuFX5kirkN/mH4cr7CPcLuQnc7UFWwvcAAAAASUVORK5CYII="/></a></li>
+<li><a href="http://www.reddit.com/r/nzxt" target="_blank"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAABg1BMVEXvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiPvSiNJ98DUAAAAgHRSTlMAAwQFCQsMExYZGhscHR4fICEiJCUnKCotLzAyMzQ1OUVHSUpOUlNUWFlbXF1eX2BhY2ZpbG1wcXR2eHl6gIOEhYaMjZCRk5SVl5iam56io6Soqautr7Kztba6u77Bw8nP0tPU19na3d7f4OPl5ufp6+zt7u/w8fLz9PX5+vv8/XxXGrAAAAEkSURBVEjH7dbJN0JhGAbwV+bhZookV4bMKvOY4crMrSiKuIaKUioZrujy/Ol2dt85rg2L71m9m9/iOeddPJRWdSZN0B1S9QqVE044+RtyL2sAELi8lu5+SCL0BABGp2xeh6fIJh/fV6o6DwDdc7HlfIYKDCJNWnDVIa4A0XbbgPUN86LDIqcG0VPqYhAiT7TGd1G3jZKJsKkMSxTepLMIaQdVxwxS4cOw+JhZqN9pAeKNz5VHgG1DIbw2s+o3hdBntvcO7Tr7gYeumCkJjK8phERDjkGEQ4y1Asj6DUCovFi7Cgh7CiFhZBHaR06wu9umYO2cNRCCNOOiwCkhTlkG8d4AhemRLQ1YdPhPPnE+KgVvk268eN/583PCyX8mvxhX+ifcF8hcqbndB/77AAAAAElFTkSuQmCC"/></a></li>
+</ul>
+<div class="clear"></div>
+<div id="homepage_newsletter">
+<!-- Begin MailChimp Signup Form -->
+<div id="mc_embed_signup">
+<form action="http://nzxt.us6.list-manage.com/subscribe/post?u=3cfd47eeaf4e2488a6ac1d8c6&amp;id=a5bcea8d8a" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+<div class="mc-field-group">
+<input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="Subscribe to our newsletter for special deals">
+</div>
+<div id="mce-responses" class="clear">
+<div class="response" id="mce-error-response" style="display:none"></div>
+<div class="response" id="mce-success-response" style="display:none"></div>
+</div>
+<div class="clear" style="text-align: right">
+<input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button btn" style="width: 100px; margin-right: 10px;">
+</div>
+</form>
+</div>
+<!--End mc_embed_signup-->
+<!-- <form>
+									<input type="text" name="email" placeholder="Subscribe to our newsletter for special deals"/><br>
+									<button type="submit" class="btn">Subscribe ></button>
+								</form> -->
+</div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+</div>
+</div><!-- end container -->
+</div>	<!-- end wrapper -->
+<div id="footer">
+<div class="centered-content">
+<div class="footer-column">
+<div class="footer-header">Join Our Community</div>
+<div class="footer-item"><a href="https://www.facebook.com/nzxtcorp" target="_blank">Facebook</a></div>
+<div class="footer-item"><a href="https://twitter.com/NZXTCorp" target="_blank">Twitter</a></div>
+<div class="footer-item"><a href="http://youtube.com/nzxtus" target="_blank">YouTube</a></div>
+<div class="footer-item"><a href="http://steamcommunity.com/groups/nzxtgaming" target="_blank">Steam</a></div>
+<div class="footer-item"><a href="http://www.reddit.com/r/nzxt" target="_blank">Reddit</a></div>
+</div>
+<div class="footer-column">
+<div class="footer-header">Support</div>
+<div class="footer-item">
+<div class="float-right">
+<a href='support'>
+<img alt="" title="" src="assets/images/xicon_footer_nzxt_support.gif.pagespeed.ic.7uiU2fL107.png" width="44" height="24"/>
+</a>
+</div>
+<a href="http://nzxt.com/support" alt="Use our advanced ticketing system to troubleshoot your NZXT gear.">Support Desk</a>
+</div>
+<!--<div class="footer-item">
+							<div class="float-right"> -->
+<!-- BEGIN FUSION TAG CODE - DO NOT EDIT! -->
+<!--	<a href="javascript: void(0);" onclick="javascript: window.open('http://www.nzxt.com/support/visitor/index.php?/Default/LiveChat/Chat/Request/_sessionID=/_promptType=chat/_proactive=0/_filterDepartmentID=/_randomNumber=ajoj5i2mmfh40iuehp4hajm6ozm9fkhi/_fullName=/_email=/', 'livechatwin', 'toolbar=0,location=0,directories=0,status=1,menubar=0,scrollbars=0,resizable=1,width=600,height=680');" class="livechatlink">
+									<img alt="" title="" src="http://www.nzxt.com/assets/images/icon_footer_live_chat.png" />
+								</a>-->
+<!-- END FUSION TAG CODE - DO NOT EDIT! -->
+<!--</div>-->
+<!-- BEGIN FUSION TAG CODE - DO NOT EDIT! -->
+<!--<a href="javascript: void(0);" onclick="javascript: window.open('http://www.nzxt.com/support/visitor/index.php?/Default/LiveChat/Chat/Request/_sessionID=/_promptType=chat/_proactive=0/_filterDepartmentID=/_randomNumber=ajoj5i2mmfh40iuehp4hajm6ozm9fkhi/_fullName=/_email=/', 'livechatwin', 'toolbar=0,location=0,directories=0,status=1,menubar=0,scrollbars=0,resizable=1,width=600,height=680');" class="livechatlink">Get Instant Help</a>-->
+<!-- END FUSION TAG CODE - DO NOT EDIT! -->
+<!--</div>-->
+<!--	<div class="footer-item">
+							<div class="float-right">
+								<a href='/forum'><img alt="" title="" src="http://www.nzxt.com/assets/images/icon_footer_nzxt_lounge.gif" /></a>
+							</div>
+							<a href="/forum" alt="Ask your question to your peers, you will likely find help there.">Get help from your peers</a>
+						</div>
+					-->
+<div class="footer-item">
+<a href="support/downloads">Downloads</a>
+</div>
+<div class="footer-item">
+<a href="page/warranty">Warranty</a>
+</div>
+<div class="footer-item">
+<a href="page/terms">Terms and Conditions</a>
+</div>
+</div>
+<div class="footer-column">
+<div class="footer-header">Store</div>
+<div class="footer-item">
+<div class="float-right">
+<a href='http://store.nzxt.com/'><img alt="" title="" src="assets/images/xicon_footer_nzxt_store.gif.pagespeed.ic.Ym9XCxeFae.png" width="41" height="24"/></a>
+</div>
+<a href="http://store.nzxt.com/" alt="Promotions, discounts and complete specs only in our online store!">Shop Online</a>
+</div>
+<div class="footer-item">
+<a href="page/reseller_continent" alt="Chances are we have a reseller in your country.  Find one now!">
+Visit our Worldwide Resellers
+</a>
+</div>
+</div>
+<div class="footer-column-last">
+<div class="footer-header">Contact Us</div>
+<div class="footer-item"><a href="page/contact_us" alt="Click to reach out to our friendly customer service staff">Contact Us</a></div>
+<div class="footer-item"><a href="page/about_us" alt="Click to reach out to our friendly customer service staff">About Us</a></div>
+</div>
+<div class="clear"></div>
+<br/><br/>
+<div class="footer-copyright">Copyright 2014 NZXT, Inc. All Rights Reserved.</div>
+</div>
+</div>
+<!-- </div>
+	</div> -->
+<!-- BEGIN FUSION TAG CODE - DO NOT EDIT! -->
+<!--
+<div id="swifttagcontainerx3wj02hx60"><div id="proactivechatcontainerx3wj02hx60"></div><div style="display: inline;" id="swifttagdatacontainerx3wj02hx60"></div></div> 
+<script type="text/javascript">var swiftscriptelemx3wj02hx60=document.createElement("script");swiftscriptelemx3wj02hx60.type="text/javascript";var swiftrandom = Math.floor(Math.random()*1001); var swiftuniqueid = "x3wj02hx60"; var swifttagurlx3wj02hx60="http://www.nzxt.com/support/visitor/index.php?/Custom/LiveChat/HTML/SiteBadge/cHJvbXB0dHlwZT1jaGF0JnVuaXF1ZWlkPXgzd2owMmh4NjAmdmVyc2lvbj00LjQwLjgzMyZwcm9kdWN0PUZ1c2lvbiZmaWx0ZXJkZXBhcnRtZW50aWQ9MTYsMTcmc2l0ZWJhZGdlY29sb3I9d2hpdGUmYmFkZ2VsYW5ndWFnZT1lbiZiYWRnZXRleHQ9bGl2ZWNoYXQmb25saW5lY29sb3I9IzE5MTkxOSZvbmxpbmVjb2xvcmhvdmVyPSM1ZjVmNWYmb25saW5lY29sb3Jib3JkZXI9IzEyMTIxMiZvZmZsaW5lY29sb3I9IzE5MTkxOSZvZmZsaW5lY29sb3Job3Zlcj0jNWY1ZjVmJm9mZmxpbmVjb2xvcmJvcmRlcj0jMTIxMjEyJmF3YXljb2xvcj0jMTkxOTE5JmF3YXljb2xvcmhvdmVyPSM1ZjVmNWYmYXdheWNvbG9yYm9yZGVyPSMxMjEyMTImYmFja3Nob3J0bHljb2xvcj0jMTkxOTE5JmJhY2tzaG9ydGx5Y29sb3Job3Zlcj0jNWY1ZjVmJmJhY2tzaG9ydGx5Y29sb3Jib3JkZXI9IzEyMTIxMiZjdXN0b21vbmxpbmU9JmN1c3RvbW9mZmxpbmU9JmN1c3RvbWF3YXk9JmN1c3RvbWJhY2tzaG9ydGx5PQo2ZDdjZmExMDY4YjhlNTk3YmY5ODIyMDgxYjAzOGQ3ZTQ3ZmI5YTI2";setTimeout("swiftscriptelemx3wj02hx60.src=swifttagurlx3wj02hx60;document.getElementById('swifttagcontainerx3wj02hx60').appendChild(swiftscriptelemx3wj02hx60);",1);</script>
+<!-- END FUSION TAG CODE - DO NOT EDIT! -->
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"beacon-4.newrelic.com","licenseKey":"9c552bf881","applicationID":"1889347","transactionName":"MlwHN0JWDEQFUUNcWAsWJABEXg1ZS2JWUlJKUAsHVU8=","queueTime":0,"applicationTime":114,"ttGuid":"","agentToken":"","atts":"HhsEQQpMH0o=","errorBeacon":"bam.nr-data.net","agent":"js-agent.newrelic.com\/nr-476.min.js"}</script></body>
+</html>

@@ -1,0 +1,52 @@
+{% extends 'framed_base.html' %}
+
+{% block body %}
+<script type="text/javascript">
+  function unhide(divID) {
+    var item = document.getElementById(divID);
+    if (item) {
+      item.className=(item.className=='hidden')?'unhidden':'hidden';
+    }
+  }
+  function theFunction(divID) {
+    var item = document.getElementById(divID);
+    if (item) {
+      item.className=(item.className=='hidden')?'unhidden':'hidden';
+    }
+    return true
+  }
+</script> 
+{% if mysession %}
+<ul class="nav nav-tabs" role="tablist">
+  <li role="presentation" class="active"><a href="#">Setup</a></li>
+  <li role="presentation"><a href="{% url 'results' %}{{mysession.sessionID}}">Results</a></li>
+  <li role="presentation"><a href="{% url 'summary' %}{{mysession.sessionID}}">Summary</a></li>
+</ul>
+<div class="col-sm-5">
+	<h4>List of Sources <a href="{% url 'addsource' %}{{mysession.sessionID}}"><span class="glyphicon glyphicon-plus-sign"></span> Add New</a></h4>
+	<ul class="list-group">
+		{% for source in sources %}
+	  	    <li class="list-group-item"><a href="{% url 'removesource' %}{{mysession.sessionID}}{{source.name}}"><span class="glyphicon glyphicon-remove"></span></a><a href="javascript:unhide('{{source.name}}');"><span class="glyphicon glyphicon-pencil"></span></a> {{source.name}}</li>
+		    <div id="{{source.name}}" class="hidden">
+		      <li class="list-group-item"></a> {{source.url}}</li>
+		    </div>
+	  	{% endfor %}
+	</ul>
+	<a href="{% url 'crawling' %}{{mysession.sessionID}}" onclick="return theFunction('coolie')" class="btn btn-primary" role="button"> Start Crawl</a>
+	<div id="coolie" class="hidden">
+	  <li class="list-group-item"></a> Crawling please wait</li>
+	</div>
+</div>
+<div class="col-sm-5">
+	<h4>List of Monitors <a href="{% url 'addmonitor' %}{{mysession.sessionID}}"><span class="glyphicon glyphicon-plus-sign"></span> Add New</a></h4>
+	<ul class="list-group">
+		{% for monitor in monitors %}
+			<li class="list-group-item"><a href="{% url 'removemonitor' %}{{mysession.sessionID}}{{monitor.name}}"><span class="glyphicon glyphicon-remove"></span></a> <a href="javascript:unhide('{{monitor.name}}');"><span class="glyphicon glyphicon-pencil"></span></a> {{monitor.name}}</li>
+			<div id="{{monitor.name}}" class="hidden">
+			  <li class="list-group-item"></a> {{monitor.url}}</li>
+			</div>
+	  	{% endfor %}
+	</ul>
+</div>
+{% endif %}
+{% endblock %}

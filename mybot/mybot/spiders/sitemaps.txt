@@ -1,0 +1,4 @@
+Sitemap List:
+<a target="_top" href="http://www.cbc.ca/sitemap/">Site Map</a>
+<a href="http://spiderbites.nytimes.com">Site Map</a>
+<a href="/sitemap/">Site map</a>

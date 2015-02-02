@@ -1,0 +1,58 @@
+{%extends 'base.html' %}
+ 
+ 
+{%block content %}
+<h1>Welcome to WebSpider </h1>
+<style>
+#footer {
+    clear:both;
+    text-align:center;
+    height: 32px;
+    width: 100%;
+}
+#header {
+    clear:both;
+    text-align:center;
+    height: 32px;
+    width: 100%;
+}
+  h2   {color:#FFFFFF  }
+</style>
+<div class="jumbotron" style="background-color:rgba(43, 127, 219, 0.77)">
+<div class="row">
+        <div class="col-md-8" >
+          <h2>Introduction</h2>
+          <p style="color:#FFFFFF">blah blah blah introduction</p>
+        </div>
+    <div class="col-md-4" style="background-color:rgb(233, 233, 233)">
+            <center><h4 style="color:#5cb85c">Register</h4></center>
+        {% if user.is_authenticated %}
+            <a href="/job/" class="btn btn-success" role="button">Crawl Web</a>
+        {% else %}
+
+            {% if registered %}
+            <strong>thank you for registering!</strong>
+            <a href="/">Return to the homepage.</a><br />
+            {% else %}
+    
+            <form id="user_form" method="post" action="/register/"
+                    enctype="multipart/form-data">
+    
+                {% csrf_token %}
+    
+                <!-- Display each form. The as_p method wraps each element in a paragraph
+                     (<p>) element. This ensures each element appears on a new line,
+                     making everything look neater. -->
+                {{ user_form.as_p }}
+                {{ profile_form.as_p }}
+    
+                <!-- Provide a button to click to submit the form. -->
+                <button type="submit" class="btn btn-success">register</button>
+            </form>
+            {% endif %}
+        {% endif %}
+        <div id="footer"></div>
+    </div>
+</div>
+</div>
+{% endblock %}

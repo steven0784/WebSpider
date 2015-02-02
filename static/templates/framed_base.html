@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	{% if user.is_authenticated %}
+        <div class="row">
+            <div class="col-sm-2">
+                <a href="{% url 'addsession' %}"><span class="glyphicon glyphicon-plus-sign"></span> New Session</a>
+                {% if sessions %}
+                <div class="list-group">
+                    {% for session in sessions %}
+                        {% if mysession.sessionID == session.sessionID %}
+                            <a href="{% url 'root' %}{{ session.sessionID }}" class="list-group-item active">
+				<h4 class="list-group-item-heading">Session {{session.sessionID}}</h4>{{ session.date }}
+				{% for done in p %}
+				    {% if done == session.sessionID %}
+					<span class="badge">new</span>
+				    {% endif %}
+				{% endfor %}
+                            </a>
+                            <li class="list-group-item list-group-item-danger">
+                                <a href="{% url 'removesession' %}{{session.sessionID}}">
+                                    <span style='color:red' class="glyphicon glyphicon-remove"></span></a>
+                                    <font color="red">Delete Session {{session.sessionID}}</font>
+                            </li>
+                        {% else %}
+                            <a href="{% url 'root' %}{{ session.sessionID }}" class="list-group-item">
+				<h4 class="list-group-item-heading">Session {{session.sessionID}}</h4>{{ session.date }}
+				{% for done in p %}
+				    {% if done == session.sessionID %}
+					<span class="badge">new</span>
+				    {% endif %}
+				{% endfor %}
+                            </a>
+                        {% endif %}
+                    {% endfor %}
+
+                </div>
+                {% endif %}
+            </div>
+            <div class="col-sm-10">
+                {% block body %}
+                {% endblock %}
+            </div>
+        </div>
+	{% else %}
+        <div class="jumbotron">
+            <h1>Welcome to WebSpider</h1>
+            <p>WebSpider is an app that lets you track references between monitor sites and source sites!</p>
+        </div>
+	{% endif %}
+{% endblock %}

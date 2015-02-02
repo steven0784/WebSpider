@@ -1,0 +1,64 @@
+{% extends 'framed_base.html' %}
+{% block body %}
+
+<ul class="nav nav-tabs" role="tablist">
+  <li role="presentation"><a href="/{{mysession.sessionID}}">Setup</a></li>
+  <li role="presentation"><a href="{% url 'results' %}{{mysession.sessionID}}">Results</a></li>
+  <li role="presentation" class="active"><a href="#">Summary</a></li>
+</ul>
+
+<h1>Summary of Session {{sessionID}}</h1>
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">Number of links per source</div>
+        <table class="table">
+            <tr>
+                <td><b><center>Monitor</center></b></td>
+                {% for i in sessionMonitors %}
+                    <td><center>{{ i.name }}</center></td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <td><b><center>URL</center></b></td>
+                {% for i in sessionMonitors %}
+                    <td><center>
+                    <a href="{{ i.url }}"> {{ i.url }} </a>
+                    <center></td>
+                {% endfor %}
+            </tr>
+            <tr>
+                <td><b><center>Links</center></b></td>
+                {% for i in lengthList %}
+                    <td><center>{{ i }}</center></td>
+                {% endfor %}
+            </tr>
+        </table>
+</div>
+
+
+
+<ul class="list-group">
+    {% for i in monitorNames %}
+        <li class="list-group-item">
+          <a href="{{ i.article_url }}">{{ i.article_url }}</a>
+          <br><b>Title:</b> {{ i.article_title }}
+            {% if i.ref_link %}
+                <br> <b>Reference Link: </b>
+                <a href="{{i.ref_link}}">{{i.ref_link}}</a>
+            {% endif %}
+            {% if i.ref_keyword %}
+                <br> 
+                <b>Keyword: </b>{{i.ref_keyword}}
+                <br>
+                <b>Summary:</b>
+                <br>
+                {{i.excerpts}}
+            {% endif %}
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}
+
+
+
